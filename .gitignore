@@ -1,2 +1,4 @@
 .idea/
 input_images/
+*.jpg
+__pycache__/

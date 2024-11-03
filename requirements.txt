@@ -1,7 +1,5 @@
 # Image processing
 Pillow==11.0.0
-numpy==2.1.2
-
 # Code formatting and linting
 black==24.10.0
 pre-commit==4.0.1

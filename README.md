@@ -10,8 +10,10 @@ This project implements a Python pipeline to process images stored in a specific
 
 ## Usage
 
-## Configuration and Execution
+To process images with this pipeline:
 
-## Requirements
+1. **Place your images** in the ``input_images/`` folder (or configure the path in ``main.py`` if using a different folder).
+2. **Run the pipeline** by executing:
 
-## Notes
+```python main.py```
+3. **Find processed images** in a uniquely named subfolder inside the ``dataset/`` folder, created for each execution of the pipeline.
