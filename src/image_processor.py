@@ -4,6 +4,9 @@ from PIL import Image
 
 
 class ImageProcessor:
+    PADDING_COLOR = (114, 114, 144)
+    DATETIME_FORMAT = "%Y%m%d%H%M%S"
+    OUTPUT_FOLDER = "datasets"
 
     def __init__(self, folder_path: str):
         """
@@ -16,7 +19,7 @@ class ImageProcessor:
         """
         self.folder_path = folder_path
         self.output_folder = os.path.join(
-            "datasets", datetime.now().strftime("%Y%m%d%H%M%S")
+            self.OUTPUT_FOLDER, datetime.now().strftime(self.DATETIME_FORMAT)
         )
         os.makedirs(self.output_folder, exist_ok=True)
 
@@ -88,15 +91,14 @@ class ImageProcessor:
         Image.Image
             Square image with padding if needed.
         """
-        background_color = (114, 114, 144)
         width, height = img.size
         if width == height:
             return img
         elif width > height:
-            new_img = Image.new("RGB", (width, width), background_color)
+            new_img = Image.new("RGB", (width, width), self.PADDING_COLOR)
             new_img.paste(img, (0, (width - height) // 2))
         else:
-            new_img = Image.new("RGB", (height, height), background_color)
+            new_img = Image.new("RGB", (height, height), self.PADDING_COLOR)
             new_img.paste(img, ((height - width) // 2, 0))
 
         return new_img
